@@ -1,0 +1,21 @@
+on:
+  push:
+    paths:
+    - 'docker/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker Login
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login docker.io -u dsbrng25b --password-stdin
+
+      - uses: actions/checkout@v2
+
+      - name: Docker Build
+        working-directory: docker/
+        run: make build
+
+      - name: Docker Push
+        working-directory: docker/
+        run: make push
