@@ -1,6 +1,6 @@
 .PHONY: build push
 
-VERSION ?= 1.10.1
+VERSION ?= 1.10.2
 IMAGE ?= index.docker.io/dsbrng25b/fluentd:v$(VERSION)
 
 build:
